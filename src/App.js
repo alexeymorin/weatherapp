@@ -2,12 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  /**
+   * useState используется, чтобы наделить функциональный компонент внутренним состоянием,
+   * возвращает массив с двумя элементами, который содержит: текущее значение состояния и функцию для его обновления.
+   * React сохраняет это состояние между рендерами. 
+   */
   const [temp, setTemp] = useState('');
   const [desc, setDesc] = useState('');
   const [icon, setIcon] = useState('');
   const [isReady, setReady] = useState(false);
   const URL = `http://api.openweathermap.org/data/2.5/weather?q=${process.env.REACT_APP_CITY}&APPID=${process.env.REACT_APP_API_KEY}&units=metric`;
 
+  /**
+   * useEffect позволяет выполнять побочные эффекты из функционального компонента.
+   */
   useEffect(() => {
     fetch(URL)
     .then(result => result.json())
